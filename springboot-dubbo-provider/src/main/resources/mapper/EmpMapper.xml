@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.nt.demo.provider.dao.EmpMapper" >
+
+  <insert id="insertEmp" parameterType="Emp" >
+    insert into emp (empno, ename, sal, 
+      deptno)
+    values (#{empno,jdbcType=INTEGER}, #{ename,jdbcType=VARCHAR}, #{sal,jdbcType=INTEGER}, 
+      #{deptno,jdbcType=INTEGER})
+  </insert>
+
+  <select id="selectEmp" resultType="Emp">
+    select * from emp where empno = 1
+  </select>
+
+  <insert id="insertSelective" parameterType="Emp" >
+    insert into emp
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="empno != null" >
+        empno,
+      </if>
+      <if test="ename != null" >
+        ename,
+      </if>
+      <if test="sal != null" >
+        sal,
+      </if>
+      <if test="deptno != null" >
+        deptno,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="empno != null" >
+        #{empno,jdbcType=INTEGER},
+      </if>
+      <if test="ename != null" >
+        #{ename,jdbcType=VARCHAR},
+      </if>
+      <if test="sal != null" >
+        #{sal,jdbcType=INTEGER},
+      </if>
+      <if test="deptno != null" >
+        #{deptno,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+</mapper>
