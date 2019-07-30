@@ -21,6 +21,9 @@ import java.io.InputStreamReader;
  * 2019/7/3
  **/
 @Slf4j
+/**
+ * order中数字越小，优先级越高
+ */
 @Order(0)
 @WebFilter(urlPatterns = "/*", filterName = "loginFilter")
 public class LoginFilter implements Filter {

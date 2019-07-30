@@ -32,6 +32,7 @@ public class LimiteFilter implements Filter {
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
         //((HttpServletResponse) servletResponse).setHeader("Locatin","/demo/core/register");
 
+        // 以redis实现限制请求频率
         String remoteAddr = ((HttpServletRequest) servletRequest).getRemoteAddr();
 
         Jedis redis = RedisUtils.getRedis();
@@ -48,8 +49,8 @@ public class LimiteFilter implements Filter {
         if (i <= 0) {
             //redis.del(remoteAddr);
            // servletRequest.getRequestDispatcher("/meizu.html").forward(servletRequest, servletResponse);
-          //   ((HttpServletResponse) servletResponse).sendRedirect("/demo/meizu.html");
-            ((HttpServletResponse) servletResponse).setHeader("Location","/demo/meizu.html");
+             ((HttpServletResponse) servletResponse).sendRedirect("/demo/meizu.html");
+           // ((HttpServletResponse) servletResponse).setHeader("Location","/demo/meizu.html");
         }
 
         filterChain.doFilter(servletRequest, servletResponse);

@@ -1,10 +1,9 @@
 package com.nt.demo.config;
 
+import com.nt.demo.config.interceptors.LoginInterceptor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.web.servlet.config.annotation.CorsRegistry;
-import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
-import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import org.springframework.web.servlet.config.annotation.*;
 
 /**
  * 配置类，主要配置：拦截器，过滤器，跨域配置等
@@ -14,11 +13,25 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @Configuration
 public class WebConfig implements WebMvcConfigurer {
 
+    @Autowired
+    private LoginInterceptor loginInterceptor;
+
+    /**
+     * 添加拦截器，拦截器通过此方法添加才会生效
+     * @param registry
+     */
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
 
+        // 拦截器可以通过spring的依赖注入
+        // registry.addInterceptor(拦截器)
+        registry.addInterceptor(loginInterceptor).addPathPatterns("/getUser","/register","/*");
     }
 
+    /**
+     * 此方法待研究
+     * @param registry
+     */
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
 
@@ -30,6 +43,15 @@ public class WebConfig implements WebMvcConfigurer {
      */
     @Override
     public void addCorsMappings(CorsRegistry registry) {
+
+    }
+
+    /**
+     * 此方法用啦配置静态资源的：eg：html，css，js
+     * @param registry
+     */
+    @Override
+    public void addResourceHandlers(ResourceHandlerRegistry registry) {
 
     }
 }
