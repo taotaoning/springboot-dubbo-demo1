@@ -1,11 +1,14 @@
 package com.nt.demo.controller;
 
 import com.nt.demo.middle.entity.Emp;
+import com.nt.demo.middle.entity.User;
 import com.nt.demo.middle.intf.TestService;
 import com.nt.demo.pojo.EmpVO;
+import com.nt.demo.pojo.UserVO;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.dubbo.config.annotation.Reference;
 import org.springframework.beans.BeanUtils;
+import org.springframework.boot.autoconfigure.security.SecurityProperties;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
@@ -24,28 +27,41 @@ public class CoreController {
     private TestService testService;
 
     @PostMapping("/register")
-    public String checkLogin(@RequestBody @Valid EmpVO empVO, BindingResult errors){
+    public String checkLogin(@RequestBody @Valid EmpVO empVO, BindingResult errors) {
 
         log.info(empVO.toString());
 
         Emp emp = new Emp();
-        BeanUtils.copyProperties(empVO,emp);
+        BeanUtils.copyProperties(empVO, emp);
         log.info(emp.toString());
         int result = testService.insertSelective(emp);
-        if (0 != result){
+        if (0 != result) {
             return "success";
         }
         return "fail";
     }
 
     @GetMapping("/getEmp/{empno}")
-    public EmpVO getUser(@PathVariable(name = "empno",required = true) Integer empno){
-        log.info(empno+"--");
+    public EmpVO getEmp(@PathVariable(name = "empno", required = true) Integer empno) {
+        log.info(empno + "--");
         Emp emp = testService.selectEmp(empno);
         log.info(emp.toString());
         EmpVO empVO = new EmpVO();
-        BeanUtils.copyProperties(emp,empVO);
+        BeanUtils.copyProperties(emp, empVO);
         return empVO;
+    }
+
+    @GetMapping("getUser/{userId}")
+    public UserVO getUser(@PathVariable(name = "userId", required = true) Integer userId) {
+        User user = testService.selectUserById(userId);
+        UserVO userVO = new UserVO();
+        if (null != user) {
+            BeanUtils.copyProperties(user, userVO);
+        }else {
+            log.info("该用户不存在");
+        }
+
+        return userVO;
     }
 
 }

@@ -1,22 +1,33 @@
 package com.nt.demo.middle.entity;
 
+import javax.persistence.Column;
+import javax.persistence.Table;
 import java.io.Serializable;
 
 /**
  * Create by TaoTaoNing
  * 2019/7/25
  **/
+
+/**
+ * @Table需要引入jar包 persistence-api
+ */
+@Table(name = "emp")
 public class Emp implements Serializable {
 
 
     private static final long serialVersionUID = -330785389071166905L;
 
+    @Column(name = "empno")
     private Integer empno;
 
+    @Column(name = "ename")
     private String ename;
 
+    @Column(name = "sal")
     private Integer sal;
 
+    @Column(name = "deptno")
     private Integer deptno;
 
     public Integer getEmpno() {
