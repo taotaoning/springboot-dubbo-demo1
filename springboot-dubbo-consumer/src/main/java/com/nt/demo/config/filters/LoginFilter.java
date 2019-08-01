@@ -52,10 +52,10 @@ public class LoginFilter implements Filter {
         String line = null;
         StringBuilder sb = new StringBuilder();
         while ((line = br.readLine()) != null) {
-            System.out.println(line);
+            log.info(line);
             sb.append(line);
         }
-        System.out.println(sb.toString());
+        log.info(sb.toString());
 
         filterChain.doFilter(wrapperServletRequest, servletResponse);
     }

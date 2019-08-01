@@ -11,5 +11,8 @@
   </resultMap>
 
  -->
+<select id="getUserDetail" resultType="com.nt.demo.middle.entity.User" parameterType="int">
+    select user_id as userId,user_name as userName from tb_user where user_id = #{userId}
+</select>
 
 </mapper>
