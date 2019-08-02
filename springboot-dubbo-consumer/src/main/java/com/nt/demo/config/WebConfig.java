@@ -43,8 +43,14 @@ public class WebConfig implements WebMvcConfigurer {
      */
     @Override
     public void addCorsMappings(CorsRegistry registry) {
-
+        registry.addMapping("/demo/**")
+                .allowedOrigins("*")
+                .allowCredentials(true)
+                .allowedMethods("GET", "POST", "DELETE", "PUT", "OPTIONS")
+                .allowedHeaders("x-requested-with","Content-Type")
+                .maxAge(3600);
     }
+
 
     /**
      * 此方法用啦配置静态资源的：eg：html，css，js
