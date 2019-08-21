@@ -1,0 +1,159 @@
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<head>
+    <style type="text/css">
+
+    </style>
+
+    <!--图标-->
+    <link type="image/x-icon" rel="shortcut icon" href="img/favicon.ico"/>
+    <script type="text/javascript" src="style/js/jquery-1.7.1.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            $("p").click(function () {
+                $(this).hide();
+            });
+
+            $("#but").click(function () {
+                $.ajax({
+                    type: "get",
+                    url: "http://localhost:8899/demo/core/login",
+                    success: function (res) {
+                        alert(res);
+                    }
+                });
+
+            });
+
+            $("#btn1").click(function () {
+                var name = $("#name").val();
+                var pwd = $("#pwd").val();
+                var userId = $('#userId').val();
+
+               // alert(name + "___" + pwd);
+                $.ajax({
+                    type: "GET",
+                    url: "http://localhost:8899/demo/core/getUser/" + userId,
+                    dataType: "json"
+                }).done(function (data) {
+                    $('#ret').val(data.userName);
+                    console.log(data)
+                    console.log(data.userName)
+                });
+
+            });
+
+            $("#btn2").click(function () {
+                $("#name").val("");
+                $("#pwd").val("");
+
+            });
+
+        });
+
+
+    </script>
+</head>
+
+<body>
+<p>If you click on me, I will disappear.</p>
+
+<button id="but">but</button>
+
+<div id="login">
+    <table>
+        <tbody>
+        <tr>
+            <td>
+                name:
+            </td>
+            <td>
+                <input id="name" placeholder="name"/>
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                pwd:
+            </td>
+            <td>
+                <input id="pwd" placeholder="pwd"/>
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                id:
+            </td>
+            <td>
+                <input id="userId" placeholder="0"/>
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                后端返回的数据:
+            </td>
+            <td>
+                <input id="ret" placeholder=""/>
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                <button id="btn1">login</button>
+            </td>
+
+            <td>
+                <button id="btn2">clear</button>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<br/><br/><br/><br/>
+<div>
+    <form action="/demo/page/test" method="post" class="form-submit">
+
+        <div class="form-group">
+            <label class="form-label">userName</label>
+            <div class="form-input">
+                <input type="text" class="form-text" id="userName" name="userName" value=""/>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="form-label">userPwd</label>
+            <div class="form-input">
+                <input type="text" class="form-text" id="userPwd" name="userPwd" value=""/>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="form-label">loginTime</label>
+            <div class="form-input">
+                <input type="text" class="form-text" id="loginTime" name="loginTime" value=""/>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="form-label">state</label>
+            <div class="form-input">
+                <input type="text" class="form-text" id="state" name="state" value=""/>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10" id="div_submit">
+                <input class="btn btn-primary" id="submit" type="submit" value="提交"/>&nbsp;&nbsp;
+                <input class="btn" type="button" value="返回" onclick="history.back()"/>
+            </div>
+        </div>
+    </form>
+</div>
+
+</body>
+
+</html>

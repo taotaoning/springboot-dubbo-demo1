@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.nt.demo.provider.dao.UserMapper" >
+<!--
+  <resultMap id="BaseResult" type="com.nt.demo.middle.entity.User">
+    <id column="user_id" jdbcType="INTEGER" property="userId"/>
+    <result column="user_name" jdbcType="VARCHAR" property="userName"/>
+    <result column="user_pwd" jdbcType="VARCHAR" property="userPwd"/>
+    <result column="login_time" jdbcType="DATE" property="loginTime"/>
+    <result column="state" jdbcType="SMALLINT" property="state"/>
+  </resultMap>
+
+ -->
+<select id="getUserDetail" resultType="com.nt.demo.middle.entity.User" parameterType="int">
+    select user_id as userId,user_name as userName from tb_user where user_id = #{userId}
+</select>
+
+</mapper>
