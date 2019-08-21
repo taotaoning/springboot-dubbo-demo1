@@ -19,7 +19,7 @@ public interface TestService {
     int insertSelective(Emp emp);
 
     /**
-     * 根据userid获取用户信息
+     * 根据userid获取用户信息--主干修改
      * @param userId
      * @return
      */
