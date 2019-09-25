@@ -25,7 +25,7 @@
             法一：直接继承springboot的父项目
             法二：使用dependencyManagement标签，将springboot的pom文件引入（用于自定义继承父项目，统一版本管理）
         -->
-        <!--引入springboot web启动项-->
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
@@ -62,11 +62,11 @@
         -->
 
         <!--druid 数据源-->
-        <dependency>
-            <groupId>com.alibaba</groupId>
-            <artifactId>druid</artifactId>
-            <version>1.0.26</version>
-        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>com.alibaba</groupId>-->
+            <!--<artifactId>druid</artifactId>-->
+            <!--<version>1.0.26</version>-->
+        <!--</dependency>-->
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -178,6 +178,19 @@
                  <artifactId>jackson-module-parameter-names</artifactId>
              </dependency>
              -->
+
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>dynamic-datasource-spring-boot-starter</artifactId>
+            <version>2.5.5</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.oracle</groupId>
+            <artifactId>ojdbc6</artifactId>
+            <version>11.2.0.4</version>
+        </dependency>
+
     </dependencies>
 
 
