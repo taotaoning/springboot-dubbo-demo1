@@ -179,6 +179,7 @@
              </dependency>
              -->
 
+        <!--多数据源配置依赖-->
         <dependency>
             <groupId>com.baomidou</groupId>
             <artifactId>dynamic-datasource-spring-boot-starter</artifactId>
