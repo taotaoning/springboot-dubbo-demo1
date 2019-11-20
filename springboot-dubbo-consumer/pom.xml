@@ -12,7 +12,17 @@
     <artifactId>springboot-dubbo-consumer</artifactId>
 
     <dependencies>
+        <dependency>
+            <groupId>com.asiainfo.checkstand</groupId>
+            <artifactId>checkstand-intf</artifactId>
+            <version>${project.version}</version>
+        </dependency>
 
+        <dependency>
+            <groupId>com.asiainfo.checkstand</groupId>
+            <artifactId>config-intf</artifactId>
+            <version>${project.version}</version>
+        </dependency>
         <!-- 热部署 插件-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -88,8 +98,6 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <version>1.18.8</version>
-            <scope>provided</scope>
         </dependency>
 
         <dependency>
@@ -128,5 +136,22 @@
             <artifactId>spring-boot-starter-aop</artifactId>
         </dependency>
     </dependencies>
+
+    <build>
+        <finalName>springboot-demo-consumer</finalName>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>

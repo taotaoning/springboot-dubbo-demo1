@@ -1,5 +1,7 @@
 package com.nt.demo.provider.service;
 
+import com.nt.demo.middle.annotations.ResponseMessage;
+import com.nt.demo.middle.annotations.Verifys;
 import com.nt.demo.middle.entity.Emp;
 import com.nt.demo.middle.entity.User;
 import com.nt.demo.middle.intf.TestService;
@@ -37,9 +39,11 @@ public class TestServiceImpl implements TestService {
         return empMapper.insert(emp);
     }
 
+    @Verifys
     @Override
-    public int insertSelective(Emp emp) {
-        return empMapper.insertSelective(emp);
+    public ResponseMessage insertSelective(Emp emp) {
+        empMapper.insertSelective(emp);
+        return new ResponseMessage("00","success");
     }
 
     @Override

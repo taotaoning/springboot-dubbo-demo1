@@ -1,6 +1,8 @@
 package com.nt.demo.middle.intf;
 
 
+import com.nt.demo.middle.annotations.ResponseMessage;
+import com.nt.demo.middle.annotations.Verifys;
 import com.nt.demo.middle.entity.Emp;
 import com.nt.demo.middle.entity.User;
 
@@ -16,7 +18,8 @@ public interface TestService {
 
     int insertEmp(Emp emp);
 
-    int insertSelective(Emp emp);
+    @Verifys
+    ResponseMessage insertSelective(Emp emp);
 
     /**
      * 根据userid获取用户信息--主干修改

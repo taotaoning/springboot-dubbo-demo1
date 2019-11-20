@@ -1,5 +1,6 @@
 package com.nt.demo.controller;
 
+import com.asiainfo.checkstand.service.PayApiService;
 import com.nt.demo.middle.intf.TestService;
 import com.nt.demo.pojo.UserVO;
 import lombok.extern.slf4j.Slf4j;
@@ -29,6 +30,9 @@ public class TestController {
     @Reference
     private TestService testService;
 
+    @Reference
+    private PayApiService payApiService;
+
     /**
      * 因为controller类上标注的是@Controller标签，想要返回json或xml等响应信息，必须
      * 使用@ResponseBody注解
@@ -46,5 +50,6 @@ public class TestController {
         model.addAttribute("hi","from server!");
         return "login";
     }
+
 
 }

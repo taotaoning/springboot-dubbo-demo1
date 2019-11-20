@@ -29,15 +29,13 @@
             $("#btn1").click(function () {
                 var name = $("#name").val();
                 var pwd = $("#pwd").val();
-                var userId = $('#userId').val();
 
-               // alert(name + "___" + pwd);
+                alert(name + "___" + pwd);
                 $.ajax({
                     type: "GET",
-                    url: "http://localhost:8899/demo/core/getUser/" + userId,
+                    url: "http://localhost:8899/demo/core/getUser/1",
                     dataType: "json"
                 }).done(function (data) {
-                    $('#ret').val(data.userName);
                     console.log(data)
                     console.log(data.userName)
                 });
@@ -81,16 +79,6 @@
                 <input id="pwd" placeholder="pwd"/>
             </td>
         </tr>
-
-        <tr>
-            <td>
-                id:
-            </td>
-            <td>
-                <input id="userId" placeholder="0"/>
-            </td>
-        </tr>
-
         <tr>
             <td>
                 后端返回的数据:

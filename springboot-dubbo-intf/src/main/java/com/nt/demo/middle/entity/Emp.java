@@ -1,5 +1,9 @@
 package com.nt.demo.middle.entity;
 
+
+import com.nt.demo.middle.annotations.Verify;
+
+
 import javax.persistence.Column;
 import javax.persistence.Table;
 import java.io.Serializable;
@@ -12,12 +16,15 @@ import java.io.Serializable;
 /**
  * @Table需要引入jar包 persistence-api
  */
+
 @Table(name = "emp")
 public class Emp implements Serializable {
 
 
     private static final long serialVersionUID = -330785389071166905L;
 
+
+    @Verify(name = "员工号", required = true,maxLength = 5)
     @Column(name = "empno")
     private Integer empno;
 

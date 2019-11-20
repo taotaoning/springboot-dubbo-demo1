@@ -23,6 +23,8 @@
         <xstream.version>1.4.11.1</xstream.version>
         <mybatis.version>3.5.2</mybatis.version>
         <mybatis-spring.version>2.0.2</mybatis-spring.version>
+        <persistence-api.version>1.0</persistence-api.version>
+        <validation-api.version>2.0.1.Final</validation-api.version>
     </properties>
 
     <build>
@@ -50,6 +52,18 @@
                 <version>${springboot.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>javax.persistence</groupId>
+                <artifactId>persistence-api</artifactId>
+                <version>${persistence-api.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>javax.validation</groupId>
+                <artifactId>validation-api</artifactId>
+                <version>${validation-api.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

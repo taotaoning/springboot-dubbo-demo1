@@ -24,8 +24,8 @@ import java.io.InputStreamReader;
 /**
  * order中数字越小，优先级越高
  */
-@Order(0)
-@WebFilter(urlPatterns = "/*", filterName = "loginFilter")
+//@Order(0)
+//@WebFilter(urlPatterns = "/*", filterName = "loginFilter")
 public class LoginFilter implements Filter {
     private static final String SESSION_TOKEN = "user_name";
 
