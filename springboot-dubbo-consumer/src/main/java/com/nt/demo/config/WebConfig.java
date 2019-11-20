@@ -25,7 +25,7 @@ public class WebConfig implements WebMvcConfigurer {
 
         // 拦截器可以通过spring的依赖注入
         // registry.addInterceptor(拦截器)
-        registry.addInterceptor(loginInterceptor).addPathPatterns("/getUser","/register","/*");
+//        registry.addInterceptor(loginInterceptor).addPathPatterns("/getUser","/register","/*");
     }
 
     /**

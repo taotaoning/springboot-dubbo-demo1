@@ -14,8 +14,8 @@ import java.io.IOException;
  * Create by TaoTaoNing
  * 2019/7/26
  **/
-@Slf4j
-@WebFilter(filterName = "limitFilter", urlPatterns = "/core/*")
+//@Slf4j
+//@WebFilter(filterName = "limitFilter", urlPatterns = "/core/*")
 public class LimiteFilter implements Filter {
 
     @Override

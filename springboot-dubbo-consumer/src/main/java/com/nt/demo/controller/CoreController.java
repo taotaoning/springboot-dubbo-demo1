@@ -1,14 +1,16 @@
 package com.nt.demo.controller;
 
+import com.asiainfo.checkstand.service.PayApiService;
 import com.nt.demo.middle.entity.Emp;
 import com.nt.demo.middle.entity.User;
+import com.nt.demo.middle.exception.MyException;
 import com.nt.demo.middle.intf.TestService;
 import com.nt.demo.pojo.EmpVO;
+import com.nt.demo.middle.annotations.ResponseMessage;
 import com.nt.demo.pojo.UserVO;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.dubbo.config.annotation.Reference;
 import org.springframework.beans.BeanUtils;
-import org.springframework.boot.autoconfigure.security.SecurityProperties;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
@@ -26,19 +28,25 @@ public class CoreController {
     @Reference
     private TestService testService;
 
+    @Reference(version = "1.0.0",
+            application = "checkstand",
+            registry = "checkstand-registry")
+    private PayApiService payApiService;
+
     @PostMapping("/register")
-    public String checkLogin(@RequestBody @Valid EmpVO empVO, BindingResult errors) {
+    public ResponseMessage checkLogin(@RequestBody @Valid EmpVO empVO, BindingResult errors) {
 
         log.info(empVO.toString());
-
         Emp emp = new Emp();
         BeanUtils.copyProperties(empVO, emp);
         log.info(emp.toString());
-        int result = testService.insertSelective(emp);
-        if (0 != result) {
-            return "success";
+        ResponseMessage responseMessage = new ResponseMessage();
+        try {
+            responseMessage = testService.insertSelective(emp);
+        }catch (MyException e){
+            return new ResponseMessage(e.getErrorCode(),e.getMessage());
         }
-        return "fail";
+        return responseMessage;
     }
 
     @GetMapping("/getEmp/{empno}")
@@ -62,6 +70,12 @@ public class CoreController {
         }
 
         return userVO;
+    }
+
+    @RequestMapping("/send")
+    public String getEmp() throws Exception {
+        System.out.println("-------------------------");
+        return "{resultCode:\"00\",resultMsg:\"cccccc\"}";
     }
 
 }
