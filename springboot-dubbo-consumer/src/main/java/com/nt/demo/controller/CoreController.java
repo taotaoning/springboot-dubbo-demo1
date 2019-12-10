@@ -40,7 +40,7 @@ public class CoreController {
         Emp emp = new Emp();
         BeanUtils.copyProperties(empVO, emp);
         log.info(emp.toString());
-        ResponseMessage responseMessage = new ResponseMessage();
+        ResponseMessage responseMessage = null;
         try {
             responseMessage = testService.insertSelective(emp);
         }catch (MyException e){

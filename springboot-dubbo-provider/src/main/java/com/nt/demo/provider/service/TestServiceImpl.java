@@ -48,6 +48,6 @@ public class TestServiceImpl implements TestService {
 
     @Override
     public User selectUserById(Integer userId) {
-        return userMapper.selectByPrimaryKey(userId);
+        return userMapper.getUserDetail(userId);
     }
 }
