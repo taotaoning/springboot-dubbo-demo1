@@ -25,6 +25,7 @@
         <mybatis-spring.version>2.0.2</mybatis-spring.version>
         <persistence-api.version>1.0</persistence-api.version>
         <validation-api.version>2.0.1.Final</validation-api.version>
+        <mybatis-pluins-version>3.3.0</mybatis-pluins-version>
     </properties>
 
     <build>
@@ -54,6 +55,10 @@
                 <scope>import</scope>
             </dependency>
 
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-boot-starter</artifactId>
+            </dependency>
             <dependency>
                 <groupId>javax.persistence</groupId>
                 <artifactId>persistence-api</artifactId>

@@ -9,4 +9,5 @@ import com.nt.demo.provider.utils.MyMapper;
  **/
 //@DS("db1")
 public interface UserMapper extends MyMapper<User> {
+    User getUserDetail(Integer userId);
 }
