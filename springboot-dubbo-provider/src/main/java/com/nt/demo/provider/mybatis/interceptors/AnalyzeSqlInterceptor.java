@@ -14,7 +14,7 @@ import org.springframework.stereotype.Component;
 import java.util.Properties;
 
 /**
- * @Description
+ * @Description mysql 拦截器
  * @ClassName AnalyzeSqlInterceptor
  * @Author NingTao
  * @date 2019.12.10
