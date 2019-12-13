@@ -1,0 +1,5 @@
+dubbo:
+  registry:
+    address: 137.0.253.68:2181
+server:
+  port: 8899

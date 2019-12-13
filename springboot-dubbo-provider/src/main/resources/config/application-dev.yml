@@ -1,0 +1,19 @@
+dubbo:
+  registry:
+    address: localhost:2181
+spring:
+  datasource:
+    dynamic:
+      datasource:
+        db1:
+          driver-class-name: com.mysql.cj.jdbc.Driver
+          password: aba121!@!
+          url: jdbc:mysql://137.0.250.56:8906/PAYDB?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false
+          username: bsspay
+        db2:
+          driver-class-name: com.mysql.cj.jdbc.Driver
+          password: nt123
+          url: jdbc:mysql://localhost:3306/nt?serverTimezone=GMT
+          username: root
+      force-master: true
+      primary: db1

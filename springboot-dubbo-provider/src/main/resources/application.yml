@@ -1,0 +1,32 @@
+dubbo:
+  application:
+    id: my-provider
+    name: provider-1
+  protocol:
+    id: dubbo
+    name: dubbo
+    port: 28890
+  provider:
+    timeout: 10000
+  registry:
+    id: my-register
+    protocol: zookeeper
+  scan:
+    base-packages:  com.nt.demo.provider.service
+logging:
+  level:
+    com:
+      nt:
+        demo:
+          provider:
+            dao: debug
+mapper:
+  mappers: com.nt.demo.provider.utils.MyMapper
+mybatis:
+  mapper-locations: classpath*:mapper/*.xml
+  type-aliases-package: com.nt.demo.middle.entity
+  configuration:
+    cache-enabled: true
+spring:
+  profiles:
+    active: test

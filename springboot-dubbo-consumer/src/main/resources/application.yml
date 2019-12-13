@@ -1,0 +1,29 @@
+dubbo:
+  application:
+    id: my-consumer
+    name: consumer-1
+  consumer:
+    check: false
+    timeout: 10000
+  registry:
+    id: zk-registry
+    protocol: zookeeper
+server:
+  servlet:
+    context-path: /demo
+spring:
+#  http:
+#    converters:
+#      preferred-json-mapper: jackson
+  jackson:
+    date-format: yyyyMMddHHmmss
+    default-property-inclusion: non_null
+    time-zone: GMT+8
+  mvc:
+    date-format: yyyyMMddHHmmss
+    view:
+      suffix: .html
+  profiles:
+    active: test
+  thymeleaf:
+    prefix: classpath:/templates/

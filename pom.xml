@@ -26,6 +26,7 @@
         <persistence-api.version>1.0</persistence-api.version>
         <validation-api.version>2.0.1.Final</validation-api.version>
         <mybatis-pluins-version>3.3.0</mybatis-pluins-version>
+        <druid-version>1.0.18</druid-version>
     </properties>
 
     <build>
@@ -69,6 +70,12 @@
                 <groupId>javax.validation</groupId>
                 <artifactId>validation-api</artifactId>
                 <version>${validation-api.version}</version>
+            </dependency>
+            <!--数据源-->
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>druid</artifactId>
+                <version>${druid-version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
