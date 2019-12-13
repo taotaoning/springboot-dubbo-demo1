@@ -35,7 +35,6 @@ public class CoreController {
 
     @PostMapping("/register")
     public ResponseMessage checkLogin(@RequestBody @Valid EmpVO empVO, BindingResult errors) {
-
         log.info(empVO.toString());
         Emp emp = new Emp();
         BeanUtils.copyProperties(empVO, emp);

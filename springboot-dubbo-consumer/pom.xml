@@ -30,6 +30,12 @@
             <optional>true</optional>
         </dependency>
 
+        <!--日志-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-logging</artifactId>
+        </dependency>
+
         <!--服务发布的接口类，需要消费者和提供者共同引入-->
         <dependency>
             <groupId>com.nt.demo</groupId>

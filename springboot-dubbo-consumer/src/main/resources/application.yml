@@ -27,3 +27,10 @@ spring:
     active: test
   thymeleaf:
     prefix: classpath:/templates/
+
+# 设置日志相关配置
+loggingx:
+  level:
+    consumer: INFO
+  path: ./logs
+  contextName: springboot-consumer

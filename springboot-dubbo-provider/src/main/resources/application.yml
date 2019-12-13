@@ -13,13 +13,7 @@ dubbo:
     protocol: zookeeper
   scan:
     base-packages:  com.nt.demo.provider.service
-logging:
-  level:
-    com:
-      nt:
-        demo:
-          provider:
-            dao: debug
+
 mapper:
   mappers: com.nt.demo.provider.utils.MyMapper
 mybatis:
@@ -30,3 +24,5 @@ mybatis:
 spring:
   profiles:
     active: test
+loggingx:
+  path: ./logs

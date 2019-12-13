@@ -7,6 +7,7 @@ import com.nt.demo.middle.entity.User;
 import com.nt.demo.middle.intf.TestService;
 import com.nt.demo.provider.dao.EmpMapper;
 import com.nt.demo.provider.dao.UserMapper;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.dubbo.config.annotation.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -14,6 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
  * Create by TaoTaoNing
  * 2019/7/2
  **/
+@Slf4j
 @Service
 public class TestServiceImpl implements TestService {
 
@@ -43,6 +45,7 @@ public class TestServiceImpl implements TestService {
     @Override
     public ResponseMessage insertSelective(Emp emp) {
         empMapper.insertSelective(emp);
+        log.info("入库成功");
         return new ResponseMessage("00","success");
     }
 

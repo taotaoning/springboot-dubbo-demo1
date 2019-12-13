@@ -1,6 +1,7 @@
 package com.nt.demo.config.interceptors;
 
 import lombok.extern.slf4j.Slf4j;
+import org.slf4j.MDC;
 import org.springframework.stereotype.Component;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -9,6 +10,7 @@ import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.lang.reflect.Method;
+import java.util.UUID;
 
 /**
  * Create by TaoTaoNing
@@ -45,6 +47,9 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
         if (name.equals("getUser")) {
             // 这里写拦截的逻辑，
         }
+        String traceId = UUID.randomUUID().toString();
+        MDC.put("traceId", traceId);
+        log.info("设置traceId {}",traceId);
         return true;
     }
 
