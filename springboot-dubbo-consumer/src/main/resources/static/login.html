@@ -48,6 +48,27 @@
 
             });
 
+            $("#bnst").click(function () {
+                var name = $("#userName").val();
+                var pwd = $("#loginTime").val();
+                var data = {
+                    userName: name,
+                    loginTime: pwd
+                };
+                console.log(name + "___" + pwd);
+                $.ajax({
+                    contentType: "application/json",
+                    type: "POST",
+                    url: "http://localhost:7788/demo/page/aop",
+                    dataType: "json",
+                    data: JSON.stringify(data)
+                }).done(function (data) {
+                    console.log(data)
+                    // console.log(data.userName)
+                });
+
+            });
+
         });
 
 
@@ -103,7 +124,8 @@
 
 <br/><br/><br/><br/>
 <div>
-    <form action="/demo/page/test" method="post" class="form-submit">
+    <!--<form action="/demo/page/aop" method="post" class="form-submit">-->
+        <div  class="form-submit">
 
         <div class="form-group">
             <label class="form-label">userName</label>
@@ -135,11 +157,11 @@
 
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10" id="div_submit">
-                <input class="btn btn-primary" id="submit" type="submit" value="提交"/>&nbsp;&nbsp;
+                <input class="btn btn-primary" id="bnst" type="button"  value="提交"/>&nbsp;&nbsp;
                 <input class="btn" type="button" value="返回" onclick="history.back()"/>
             </div>
         </div>
-    </form>
+    </div>
 </div>
 
 </body>

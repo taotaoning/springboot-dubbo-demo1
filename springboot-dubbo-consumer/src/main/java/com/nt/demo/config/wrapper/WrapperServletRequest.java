@@ -2,13 +2,16 @@ package com.nt.demo.config.wrapper;
 
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.IOUtils;
+import org.springframework.util.StreamUtils;
 
 import javax.servlet.ReadListener;
 import javax.servlet.ServletInputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletRequestWrapper;
+import java.io.BufferedReader;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
+import java.io.InputStreamReader;
 
 /**
  * Create by TaoTaoNing
@@ -20,13 +23,20 @@ import java.io.IOException;
 @Slf4j
 public class WrapperServletRequest extends HttpServletRequestWrapper {
 
+
     private byte[] buffer;
+
 
     public WrapperServletRequest(HttpServletRequest request) {
         super(request);
         try {
             // 读取输入流里面的参数，保存到buff 缓存中
-            buffer = IOUtils.toByteArray(request.getInputStream());
+            ServletInputStream inputStream = request.getInputStream();
+            int len = 0;
+            while ((len = inputStream.read()) != -1){
+                System.out.println(len);
+            }
+            buffer = StreamUtils.copyToByteArray(inputStream);
         } catch (IOException e) {
             log.error(e.getMessage());
         }

@@ -22,7 +22,7 @@ import java.util.Arrays;
 @Aspect
 public class LogAspect {
 
-    @Pointcut("execution(* com.nt.demo.controller..*.*(..))")
+    @Pointcut("execution(* com.nt.demo.redis..*.*(..))")
     public void executeMethod() {
     }
 

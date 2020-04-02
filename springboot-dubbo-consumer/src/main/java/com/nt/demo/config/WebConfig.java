@@ -1,6 +1,7 @@
 package com.nt.demo.config;
 
 import com.nt.demo.config.interceptors.LoginInterceptor;
+import com.nt.demo.config.interceptors.RepetRequestInterceptor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.*;
@@ -16,6 +17,8 @@ public class WebConfig implements WebMvcConfigurer {
     @Autowired
     private LoginInterceptor loginInterceptor;
 
+    @Autowired
+    private RepetRequestInterceptor repetRequestInterceptor;
     /**
      * 添加拦截器，拦截器通过此方法添加才会生效
      * @param registry
@@ -26,6 +29,7 @@ public class WebConfig implements WebMvcConfigurer {
         // 拦截器可以通过spring的依赖注入
         // registry.addInterceptor(拦截器)
         registry.addInterceptor(loginInterceptor).addPathPatterns("/core/*");
+//        registry.addInterceptor(repetRequestInterceptor);
     }
 
     /**

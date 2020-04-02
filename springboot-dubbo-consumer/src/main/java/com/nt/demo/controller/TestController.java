@@ -1,6 +1,7 @@
 package com.nt.demo.controller;
 
 import com.asiainfo.checkstand.service.PayApiService;
+import com.nt.demo.config.limreq.LimiteRequest;
 import com.nt.demo.middle.intf.TestService;
 import com.nt.demo.pojo.UserVO;
 import lombok.extern.slf4j.Slf4j;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import sun.rmi.runtime.Log;
 
 import javax.sound.sampled.Line;
+import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -23,7 +25,7 @@ import java.util.Map;
  * 要想返回页面的话，这里必须是Controller注解。
  */
 @Slf4j
-@Controller
+@RestController
 @RequestMapping("/page")
 public class TestController {
 
@@ -38,9 +40,10 @@ public class TestController {
      * 使用@ResponseBody注解
      * @return
      */
+//    @LimiteRequest
     @RequestMapping("/test")
-    public String getHello(ModelMap modelMap, @ModelAttribute UserVO userVO){
-       log.info(userVO.getUserName());
+    public String getHello(ModelMap modelMap, @ModelAttribute HashMap<String,Object> user){
+       log.info(user.toString());
         modelMap.addAttribute("test","testAdd");
         return "meizu";
     }
@@ -49,6 +52,14 @@ public class TestController {
     public String getLogin(ModelMap model){
         model.addAttribute("hi","from server!");
         return "login";
+    }
+
+    @LimiteRequest
+    @RequestMapping("/aop")
+    @ResponseBody
+    public String getAop( @RequestBody HashMap<String,Object> user){
+        log.info(user.toString());
+        return "meizu";
     }
 
 
