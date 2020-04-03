@@ -1,24 +1,15 @@
 package com.nt.demo.config.aop;
 
-import com.alibaba.fastjson.JSONObject;
-import com.asiainfo.checkstand.domain.vo.BusinessParam;
 import com.nt.demo.config.limreq.LimiteRequest;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.collections.MapUtils;
-import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
-import org.aspectj.lang.annotation.Before;
-import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
 import javax.servlet.http.HttpServletRequest;
-import java.text.SimpleDateFormat;
-import java.util.Arrays;
-import java.util.Date;
 import java.util.HashMap;
 
 /**
@@ -57,7 +48,7 @@ public class RepetRequestAspect {
                 }
             }
 
-            log.info("提交时间:{}",new SimpleDateFormat("yyMMddHHmmss").format());
+            log.info("提交时间:{}",loginTime);
             log.info("提交时间:{}",userName);
 
 
