@@ -3,17 +3,38 @@ dubbo:
     address: localhost:2181
 spring:
   datasource:
+    druid:
+      stat-view-servlet:
+        loginUsername: admin
+        loginPassword: 123456
     dynamic:
       datasource:
-        db1:
-          driver-class-name: com.mysql.cj.jdbc.Driver
-          password: aba121!@!
-          url: jdbc:mysql://137.0.250.56:8906/PAYDB?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false
-          username: bsspay
-        db2:
-          driver-class-name: com.mysql.cj.jdbc.Driver
-          password: nt123
-          url: jdbc:mysql://localhost:3306/nt?serverTimezone=GMT
+        db-mysql:
           username: root
-      force-master: true
-      primary: db1
+          password: nt123
+          driver-class-name: com.mysql.jdbc.Driver
+          url: jdbc:mysql://localhost:3306/nt?serverTimezone=GMT
+        db-oracle:
+          driver-class-name: oracle.jdbc.driver.OracleDriver
+          url: jdbc:oracle:thin:@//203.57.227.59:1521/orcl
+          username: aikbk
+          password: yuntest123
+          druid: #以下均为默认值
+            initial-size: 3
+            max-active: 8
+            min-idle: 2
+            max-wait: -1
+            min-evictable-idle-time-millis: 30000
+            max-evictable-idle-time-millis: 30000
+            time-between-eviction-runs-millis: 0
+#            这是mysql写法，oracle 要写 SELECT * from dual
+#            validation-query: select 1
+            validation-query-timeout: -1
+            test-on-borrow: false
+            test-on-return: false
+            test-while-idle: true
+            pool-prepared-statements: true
+            max-open-prepared-statements: 100
+            filters: stat,wall
+            share-prepared-statements: true
+      primary: db-mysql

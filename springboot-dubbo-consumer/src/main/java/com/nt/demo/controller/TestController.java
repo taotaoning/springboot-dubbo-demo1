@@ -44,6 +44,7 @@ public class TestController {
     @RequestMapping("/test")
     public String getHello(ModelMap modelMap, @ModelAttribute HashMap<String,Object> user){
        log.info(user.toString());
+       testService.selectEmp(1);
         modelMap.addAttribute("test","testAdd");
         return "meizu";
     }

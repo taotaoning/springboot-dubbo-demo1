@@ -9,6 +9,8 @@ import org.apache.ibatis.mapping.SqlCommandType;
 import org.apache.ibatis.plugin.*;
 import org.apache.ibatis.session.ResultHandler;
 import org.apache.ibatis.session.RowBounds;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
 import java.util.Properties;
@@ -29,8 +31,11 @@ import java.util.Properties;
 })
 
 public class AnalyzeSqlInterceptor implements Interceptor {
+
+    private static Logger sqlLog = LoggerFactory.getLogger("sqlLog");
     @Override
     public Object intercept(Invocation invocation) throws Throwable {
+
 
         // 获取MappedStatement实例
         MappedStatement statement = (MappedStatement)invocation.getArgs()[0];
@@ -44,6 +49,7 @@ public class AnalyzeSqlInterceptor implements Interceptor {
         }
 
         String name = invocation.getMethod().getName();
+        sqlLog.debug("name is = " + name + " ---- sqlCommandType is " + sqlCommandType.name());
         System.out.println("name is = " + name + " ---- sqlCommandType is " + sqlCommandType.name());
 
         BoundSql sql = statement.getBoundSql(parameter);
@@ -53,7 +59,7 @@ public class AnalyzeSqlInterceptor implements Interceptor {
         long endTime = System.currentTimeMillis();
 
         System.out.println("执行sql："+sql.getSql()+"， 共耗时：{"+(endTime - startTime)+"}mms");
-
+        sqlLog.debug("执行sql："+sql.getSql()+"， 共耗时：{"+(endTime - startTime)+"}mms");
         return result;
     }
 

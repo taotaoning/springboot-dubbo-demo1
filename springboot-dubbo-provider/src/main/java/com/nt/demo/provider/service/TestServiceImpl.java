@@ -6,6 +6,7 @@ import com.nt.demo.middle.entity.Emp;
 import com.nt.demo.middle.entity.User;
 import com.nt.demo.middle.intf.TestService;
 import com.nt.demo.provider.dao.EmpMapper;
+import com.nt.demo.provider.dao.OracleMapper;
 import com.nt.demo.provider.dao.UserMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.dubbo.config.annotation.Service;
@@ -25,6 +26,9 @@ public class TestServiceImpl implements TestService {
     @Autowired
     private UserMapper userMapper;
 
+    @Autowired
+    OracleMapper oracleMapper;
+
     @Override
     public String hello() {
         return "hello springboot + dubbo";
@@ -33,6 +37,7 @@ public class TestServiceImpl implements TestService {
     @Override
     public Emp selectEmp(int empno){
         System.out.println("-----------------");
+        System.out.println(oracleMapper.count()+"oracle ------------------ ");
         return empMapper.selectByPrimaryKey(empno);
     }
 

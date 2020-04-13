@@ -37,9 +37,6 @@
         </encoder>
     </appender>
 
-    <!--<logger name="com.nt.demo" level="loggingx.level.consumer">-->
-        <!---->
-    <!--</logger>-->
 
     <root level="debug">
         <appender-ref ref="STDOUT"/>

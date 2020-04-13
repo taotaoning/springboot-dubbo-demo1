@@ -3,9 +3,17 @@ dubbo:
   registry:
     address: localhost:2181
 spring:
-  datasource:
+  db-mysql:
+    datasource:
+      type: com.alibaba.druid.pool.DruidDataSource
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      url: jdbc:mysql://localhost:3306/nt?serverTimezone=GMT
+      username: root
+      password: nt123
+
+  db-oracle:
     type: com.alibaba.druid.pool.DruidDataSource
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/nt?serverTimezone=GMT
-    username: root
-    password: nt123
+    driver-class-name: oracle.jdbc.driver.OracleDriver
+    url: jdbc:oracle:thin:@//203.57.227.59:1521/orcl
+    username: aikbk
+    password: Aikbk123

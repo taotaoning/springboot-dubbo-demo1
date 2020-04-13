@@ -43,7 +43,7 @@
 
         <append>true</append>
 
-        <!--控制日志输出级别-->
+        <!--控制日志输出级别 过滤掉低于DEBUG级别的日志 如 trace all-->
         <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
             <level>DEBUG</level>
         </filter>
@@ -62,14 +62,19 @@
     <!---->
     <!--</logger>-->
 
-    <root level="debug">
+    <root level="DEBUG">
         <appender-ref ref="STDOUT"/>
         <appender-ref ref="DEMO_LOG"/>
     </root>
 
     <!--sql输出控制-->
-    <logger name="com.nt.demo.provider.dao" level="DEBUG">
+    <logger name="com.nt.demo.provider.dao" level="debug">
         <appender-ref ref="SQL_LOG"/>
+    </logger>
+
+    <!--指定debug级别的日志 输出到sql_log appender-->
+    <logger name="sqlLog" level="debug" additivity="false">
+        <appender-ref ref="SQL_LOG" />
     </logger>
 
 </configuration>
